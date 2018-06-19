@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "238414199259",
+    "firebase_url": "https://echopod-b3fd0.firebaseio.com",
+    "project_id": "echopod-b3fd0",
+    "storage_bucket": "echopod-b3fd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:238414199259:android:ab795582869d5313",
+        "android_client_info": {
+          "package_name": "com.example.bpear.newsfeedapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "238414199259-gsej2k3n0suf1nvcflkiulgg2nmhtq8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bpear.newsfeedapp",
+            "certificate_hash": "3f28d472e1e77e4e0e4098fe682bb0c5a6322c88"
+          }
+        },
+        {
+          "client_id": "238414199259-hv9i5lk9lnu8vnvn19a5fa3g6c8u7u3r.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "238414199259-hv9i5lk9lnu8vnvn19a5fa3g6c8u7u3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQAL4PZTl7Cqav15kZH-tnzNXwZe03hqQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "238414199259-hv9i5lk9lnu8vnvn19a5fa3g6c8u7u3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
