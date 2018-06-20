@@ -10,17 +10,21 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import static java.security.AccessController.getContext;
 
 public class ArticleActivity extends AppCompatActivity {
     private Toolbar articalToolbar;
     private Button tokenButt;
     private Snackbar snackbar;
     private static final String TAG = "Article";
-
+    public static final String BLOG_URL = "http://www.echodailynews.com/category/world/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +33,17 @@ public class ArticleActivity extends AppCompatActivity {
         articalToolbar = findViewById(R.id.article_toolbar);
         articalToolbar.setTitle("Articles");
 
-        tokenButt = findViewById(R.id.tokenId);
-        tokenButt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        WebView webView = (WebView) findViewById(R.id.webview);
+        TextView tvError = (TextView) findViewById(R.id.tv_error);
 
-                String token = FirebaseInstanceId.getInstance().getToken();
-                Log.d(TAG,"Token: " + token);
-                Toast.makeText(ArticleActivity.this, token, Toast.LENGTH_LONG).show();
-            }
-        });
+
+        if (NetworkState.isOnline(this)) {
+            tvError.setVisibility(View.GONE);
+            webView.loadUrl(BLOG_URL);
+            webView.getSettings().setJavaScriptEnabled(true);
+        } else {
+            webView.setVisibility(View.GONE);
+        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
