@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
@@ -20,23 +21,26 @@ import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.bpear.echoradio.SERVICES.BackgroundService;
+import com.google.android.exoplayer2.util.Util;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.Timer;
 
-public class MainActivity extends AppCompatActivity implements MediaController.MediaPlayerControl {
+public class MainActivity extends AppCompatActivity  {
 
     boolean started = false;
     int length = 0;
     boolean pause;
     boolean prepared = false;
     private Toolbar radiotoolbar;
-    private SeekBar seekbar;
+    private SeekBar volumeBar;
+    private SeekBar progress;
     private ProgressDialog pd;
     ImageView b_play1;
-    Button bpause;
+
 
 
     MediaPlayer mediaPlayer;
@@ -54,10 +58,11 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        seekbar = (SeekBar) findViewById(R.id.seekBar);
-        final TextView timeDuration = findViewById(R.id.timeduration);
+        volumeBar = (SeekBar) findViewById(R.id.volumeBar);
+        progress = findViewById(R.id.seekBar2);
+        progress.setEnabled(false);
 
-        mediaController = new MediaController(this);
+
         pd = new ProgressDialog(MainActivity.this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -75,6 +80,27 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
 
         radiotoolbar = findViewById(R.id.Radio_toolbar);
         radiotoolbar.setTitle("Live Stream");
+
+
+        volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                float volumeNum = progress /100f;
+                mediaPlayer.setVolume(volumeNum,volumeNum);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
         b_play1 = findViewById(R.id.play_or_pause);
 
 
@@ -93,16 +119,7 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
                     b_play1.setImageResource(R.drawable.ic_pause_black_24dp);
                     mediaPlayer.start();
 
-                    /*timeDuration.setText(String.format("%d : %02d",
-                            TimeUnit.MILLISECONDS.toMinutes(duration),
-                            TimeUnit.MILLISECONDS.toSeconds(duration) -
-                                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration))
-                    ));*/
-                   /* Intent intent = new Intent(MainActivity.this, BackgroundService.class);
-                    Util.startForegroundService(MainActivity.this, intent);*/
-
                     started = true;
-
 
                     pd.setMessage("Buffering...");
                     pd.show();
@@ -128,10 +145,11 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
 
     }
 
+
     @Override
     protected void onPause() {
         super.onPause();
-        length = mediaPlayer.getCurrentPosition();
+
         if (mediaPlayer != null) {
             mediaPlayer.reset();
             mediaPlayer.release();
@@ -149,7 +167,8 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (prepared) {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
             mediaPlayer.release();
             mediaPlayer = null;
         }
@@ -161,60 +180,6 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-    @Override
-    public void start() {
-        mediaPlayer.start();
-    }
-
-    @Override
-    public void pause() {
-        mediaPlayer.pause();
-    }
-
-    @Override
-    public int getDuration() {
-        return mediaPlayer.getDuration();
-    }
-
-    @Override
-    public int getCurrentPosition() {
-        return mediaPlayer.getCurrentPosition();
-    }
-
-    @Override
-    public void seekTo(int pos) {
-        mediaPlayer.seekTo(pos);
-    }
-
-    @Override
-    public boolean isPlaying() {
-        return mediaPlayer.isPlaying();
-    }
-
-    @Override
-    public int getBufferPercentage() {
-        return 0;
-    }
-
-    @Override
-    public boolean canPause() {
-        return false;
-    }
-
-    @Override
-    public boolean canSeekBackward() {
-        return false;
-    }
-
-    @Override
-    public boolean canSeekForward() {
-        return false;
-    }
-
-    @Override
-    public int getAudioSessionId() {
-        return 0;
-    }
 
     class PlayerTask extends AsyncTask<String, Void, Boolean> {
         @Override
@@ -226,10 +191,6 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
                 mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                     @Override
                     public void onPrepared(MediaPlayer mp) {
-                        mediaController.setMediaPlayer(MainActivity.this);
-                        mediaController.setAnchorView(findViewById(R.id.navigation));
-                        mediaController.setEnabled(true);
-                        mediaController.show();
                         pd.cancel();
                         mp.start();
                     }
@@ -247,6 +208,14 @@ public class MainActivity extends AppCompatActivity implements MediaController.M
             return prepared;
         }
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(MainActivity.this, BackgroundService.class);
+        Util.startForegroundService(MainActivity.this, intent);
 
     }
 
