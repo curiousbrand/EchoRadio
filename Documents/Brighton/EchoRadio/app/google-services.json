@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:238414199259:android:ab795582869d5313",
+        "mobilesdk_app_id": "1:238414199259:android:4c31d4a3b2e81772",
         "android_client_info": {
-          "package_name": "com.example.bpear.newsfeedapp"
+          "package_name": "com.example.bpear.echoradio"
         }
       },
       "oauth_client": [
         {
-          "client_id": "238414199259-gsej2k3n0suf1nvcflkiulgg2nmhtq8j.apps.googleusercontent.com",
+          "client_id": "238414199259-mqg339u6klllluc32htl2cfuknt0lse7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.bpear.newsfeedapp",
+            "package_name": "com.example.bpear.echoradio",
             "certificate_hash": "3f28d472e1e77e4e0e4098fe682bb0c5a6322c88"
           }
         },

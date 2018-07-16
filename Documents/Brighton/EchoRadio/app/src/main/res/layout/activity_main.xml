@@ -3,66 +3,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightbl2"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
         android:id="@+id/Radio_toolbar"
-        layout="@layout/toolbar">
+        layout="@layout/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </include>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="375dp"
-        android:background="@drawable/echologo"
+        android:background="@drawable/roundedlayout"
+        android:orientation="horizontal"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Radio_toolbar">
 
-        <!--       <TextView
-                   android:id="@+id/textView"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="16dp"
-                   android:layout_marginTop="150dp"
-                   android:layout_weight="1"
-                   android:gravity="center"
-                   android:text="ECHO RADIO STATION"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:src="@drawable/echologo" />
 
-                   android:textColor="@android:color/black"
-                   android:textSize="58sp"
-                   android:textStyle="bold|italic"
-                   app:layout_constraintLeft_toLeftOf="parent" />-->
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/buttonPlay"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="120dp"
-        android:src="@drawable/ic_playbut_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
+    <ProgressBar
+        android:id="@+id/progress_bar0"
+        android:layout_width="59dp"
+        android:layout_height="77dp"
+        android:layout_marginBottom="96dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/play_or_pause"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </ImageView>
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
-        android:id="@+id/buttonStopPlay"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="64dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginStart="235dp"
-        android:src="@drawable/ic_stopbutto_name"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:id="@+id/play_or_pause"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="50dp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_play_arrow_black_24dp"
+        android:shadowRadius="25"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.044" />
 
-    </ImageView>
+    <TextView
+        android:id="@+id/timeduration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="71dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="81dp"
+        android:text="0:00"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toStartOf="@+id/seekBar"
+        app:layout_constraintStart_toEndOf="@+id/play_or_pause"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
     <android.support.design.widget.BottomNavigationView
@@ -72,13 +85,23 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="175dp"
-        android:background="@color/echo"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
+        android:background="@color/white"
+        app:itemIconTint="@android:color/black"
+        app:itemTextColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="212dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,3 +1,4 @@
+/*
 package com.example.bpear.echoradio;
 
 import android.content.Intent;
@@ -14,7 +15,7 @@ public class SplashScreen extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
 
-        final Intent startMain = new Intent(SplashScreen.this, MainActivity.class);
+        final Intent startMain = new Intent(SplashScreen.this, LoginActivity.class);
 
         Thread timer = new Thread() {
             public void run(){
@@ -34,3 +35,4 @@ public class SplashScreen extends AppCompatActivity {
 
 }
 
+*/

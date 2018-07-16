@@ -4,4 +4,65 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="send_password_reset_email">Send Password reset email</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="forgot_pass_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="back"><![CDATA[<< Back]]></string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="channel_name">EchoRADIO</string>
+
+    <string name="accept">Accept</string>
+    <string name="eula_string">ECHO NEWS MOBILE APP
+    ________________________________________
+
+       <![CDATA[ <b>Terms and Conditions ("Terms")</b>]]>
+
+        \nLast updated: July 2, 2018\n\n\n\n
+
+    \nPlease read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the echodailynews.com website and the Mobile App “ECHO NEWS” mobile application (the "Service") operated by BSI Communications, Inc.  ("us", "we", or "our").
+
+    \nThis App is owned and controlled solely by BSI Communications, Inc., a corporation duly created and registered pursuant to the laws of the Republic of Guyana.
+
+    \nYour access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+
+    <![CDATA[    \n<b>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</b>]]>
+
+       <![CDATA[ \n<b><u>Purchases</u></b>]]>
+    \nIf you wish to purchase any product or service made available through the Service ("Purchase"), you may be asked to supply certain information relevant to your Purchase including, without limitation to, your name, credit card account information, address, telephone and/or mobile number(s), email address.
+
+  <![CDATA[ \n <b><u>Subscriptions</u></b>]]>
+   \n This application is a free service and therefore your subscription shall not be subject to any periodical billing.  You agree that you have voluntarily subscribed to this service and are not subject to duress or disability that affects your ability to voluntarily subscribe to this service.
+
+   <![CDATA[ \n<b><u>Content</u></b>]]>
+    \nOur Service may allow you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the material you share with other on and off the main websites owned and controlled by BSI Communications, Inc.  BSI Communications, Inc. is not responsible for any mutations of the copied images, Texts or comments made to any radio programs, articles, materials or other  information contained on the site(s).
+
+  <![CDATA[  \n<b><u>Links To Other Web Sites</u></b>]]>
+    \nOur Service may contain links to third-party web sites or services that are not owned or controlled by BSI Communications, Inc.,   BSI Communications, Inc. has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that BSI Communications, Inc. shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+
+  <![CDATA[  \n<b><u>Changes</u></b>]]>
+    \nWe reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide without any notice to any subscriber new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+  \n<![CDATA[ \n<b><u> Forum</u></b>]]>
+    No action shall or may be taken against BSI Communications, Inc for any reason related to the use of this mobile application in any court in any other jurisdiction.  Subscriber agrees that any action pertaining to the use or content of this application, website or radio shall be subject to the laws of the Republic of Guyana and submits to jurisdiction of the courts of Republic of Guyana.
+    <![CDATA[    <b><u>Contact Us</u></b>]]>
+    \nIf you have any questions about these Terms, please contact us at the legal department at legal@echodailynews.com.
+    </string>
+
 </resources>
