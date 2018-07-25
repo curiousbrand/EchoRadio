@@ -1,5 +1,6 @@
-
+/*
 package com.example.bpear.echoradio;
+
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,24 +8,27 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.iid.FirebaseInstanceId;
 
-import static java.security.AccessController.getContext;
 
-public class ArticleActivity extends AppCompatActivity {
+*/
+/**
+ * A simple {@link Fragment} subclass.
+ *//*
+
+public class ArticleFragment extends Fragment {
     private Toolbar articalToolbar;
     private Button tokenButt;
     private Snackbar snackbar;
@@ -32,19 +36,25 @@ public class ArticleActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "Article";
     public static final String BLOG_URL = "http://www.echodailynews.com/category/world/";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_article);
 
-        articalToolbar = findViewById(R.id.article_toolbar);
+    public ArticleFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_article, container, false);
+        articalToolbar = v.findViewById(R.id.article_toolbar);
         articalToolbar.setTitle("Articles");
         mAuth = FirebaseAuth.getInstance();
-        WebView webView = (WebView) findViewById(R.id.webview);
-        TextView tvError = (TextView) findViewById(R.id.tv_error);
+        WebView webView = (WebView) v.findViewById(R.id.webview);
+        TextView tvError = (TextView) v.findViewById(R.id.tv_error);
 
 
-        if (NetworkState.isOnline(this)) {
+        if (NetworkState.isOnline(getContext())) {
             tvError.setVisibility(View.GONE);
             webView.loadUrl(BLOG_URL);
             webView.getSettings().setJavaScriptEnabled(true);
@@ -52,8 +62,9 @@ public class ArticleActivity extends AppCompatActivity {
             webView.setVisibility(View.GONE);
         }
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) v.findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        return v;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -63,13 +74,12 @@ public class ArticleActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_radio:
-                    startActivity(new Intent(ArticleActivity.this, MainActivity.class));
+                    startActivity(new Intent(getActivity(), MainActivity.class));
                     return true;
                 case R.id.navigation_articles:
-                    finish();
                     return true;
                 case R.id.sign_out:
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ArticleActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                     builder.setTitle("Logout");
                     builder.setMessage("Are you sure you want to logout?");
@@ -99,8 +109,11 @@ public class ArticleActivity extends AppCompatActivity {
                     if (user == null) {
                         // user auth state is changed - user is null
                         // launch login activity
-                        startActivity(new Intent(ArticleActivity.this, LoginActivity.class));
-                        finish();
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.screen_area, new LoginFragment())
+                                .addToBackStack(null)
+                                .commit();
+                        getActivity().finish();
                     }
                 }
             };
@@ -108,6 +121,6 @@ public class ArticleActivity extends AppCompatActivity {
         }
 
     };
+};
 
-}
-
+*/

@@ -1,13 +1,18 @@
+
 package com.example.bpear.echoradio;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,6 +23,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private EditText inputEmail;
     private Button btnReset, btnBack;
     private FirebaseAuth auth;
+    private CoordinatorLayout coordinatorLayout;
     private ProgressBar progressBar;
 
     @Override
@@ -31,6 +37,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id
+                .coordinatorLayout);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,10 +50,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = inputEmail.getText().toString().trim();
+                final String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), "Email message body is empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -55,9 +63,19 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ForgotPasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(ForgotPasswordActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar
+                                            .make(coordinatorLayout, "An email has been sent with further instructions.", Snackbar.LENGTH_LONG);
                                 } else {
-                                    Toast.makeText(ForgotPasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(ForgotPasswordActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                    Snackbar snackbar = Snackbar
+                                            .make(coordinatorLayout, "We couldn’t find a user with that email address.", Snackbar.LENGTH_LONG);
+
+                                    // Changing action button text color
+                                    View sbView = snackbar.getView();
+                                    TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+                                    textView.setTextColor(Color.RED);
+                                    snackbar.show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
@@ -66,5 +84,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             }
         });
     }
-    }
+}
+
 

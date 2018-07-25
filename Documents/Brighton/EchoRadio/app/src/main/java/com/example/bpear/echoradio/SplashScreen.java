@@ -1,4 +1,5 @@
-/*
+
+
 package com.example.bpear.echoradio;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         final Intent startMain = new Intent(SplashScreen.this, LoginActivity.class);
+
 
         Thread timer = new Thread() {
             public void run(){
@@ -35,4 +37,4 @@ public class SplashScreen extends AppCompatActivity {
 
 }
 
-*/
+

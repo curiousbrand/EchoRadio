@@ -20,7 +20,7 @@
     </string>
     <string name="send_password_reset_email">Send Password reset email</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="lbl_forgot_password">Forgot password?</string>
+    <string name="lbl_forgot_password">Forgot password?\n then clicke here</string>
     <string name="forgot_pass_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="btn_back"><![CDATA[<< Back]]></string>
     <string name="back"><![CDATA[<< Back]]></string>
@@ -34,9 +34,9 @@
 
        <![CDATA[ <b>Terms and Conditions ("Terms")</b>]]>
 
-        \nLast updated: July 2, 2018\n\n\n\n
+        Last updated: July 2, 2018
 
-    \nPlease read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the echodailynews.com website and the Mobile App “ECHO NEWS” mobile application (the "Service") operated by BSI Communications, Inc.  ("us", "we", or "our").
+    Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the echodailynews.com website and the Mobile App “ECHO NEWS” mobile application (the "Service") operated by BSI Communications, Inc.  ("us", "we", or "our").
 
     \nThis App is owned and controlled solely by BSI Communications, Inc., a corporation duly created and registered pursuant to the laws of the Republic of Guyana.
 
@@ -64,5 +64,7 @@
     <![CDATA[    <b><u>Contact Us</u></b>]]>
     \nIf you have any questions about these Terms, please contact us at the legal department at legal@echodailynews.com.
     </string>
+    <string name="action_settings">settings</string>
+
 
 </resources>

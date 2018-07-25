@@ -1,15 +1,17 @@
-/*
 
 
 package com.example.bpear.echoradio;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -23,7 +25,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Register extends AppCompatActivity {
+
+
+
+public class RegisterFragment extends Fragment {
+
     private Button createaccnt, signin;
     private EditText emailField;
     private EditText passwordField;
@@ -36,18 +42,24 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     // END declaring_auth
 
+    public RegisterFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_register, container, false);
         // Views
-        emailField = findViewById(R.id.Email);
-        passwordField = findViewById(R.id.createPassword);
-        nameField = findViewById(R.id.fullName);
-        progressBar = findViewById(R.id.progressBar);
-        createaccnt = findViewById(R.id.createAccount);
-        signin = findViewById(R.id.signIn);
-        checkBox = findViewById(R.id.checkboxTerms);
+        emailField = v.findViewById(R.id.Email);
+        passwordField = v.findViewById(R.id.createPassword);
+        nameField = v.findViewById(R.id.fullName);
+        progressBar = v.findViewById(R.id.progressBar);
+        createaccnt = v.findViewById(R.id.createAccount);
+        signin = v.findViewById(R.id.signIn);
+        checkBox = v.findViewById(R.id.checkboxTerms);
 
 
         //START initialize auth
@@ -72,7 +84,7 @@ public class Register extends AppCompatActivity {
                 // If EditText is false then this block with execute.
                 else {
 
-                    Toast.makeText(Register.this, "Please fill all form fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Please fill all form fields.", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -80,9 +92,14 @@ public class Register extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this, LoginActivity.class));
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.screen_area1, new LoginFragment())
+                        .addToBackStack(null)
+                        .commit();
+
             }
         });
+        return v;
     }
 
     private void checkBoxAgreed() {
@@ -93,7 +110,7 @@ public class Register extends AppCompatActivity {
                     createaccnt.setEnabled(true);
                 } else {
                     createaccnt.setEnabled(false);
-                    Toast.makeText(Register.this,"Please check the box to continue",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Please check the box to continue",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -107,7 +124,7 @@ public class Register extends AppCompatActivity {
         //check if user is signed in (non null and update UI accordingly
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-        new AppEULA(this).show();
+//        new AppEULA(this).show();
 
     }
 
@@ -116,7 +133,7 @@ public class Register extends AppCompatActivity {
     public void UserRegister() {
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(emailField.getText().toString(), passwordField.getText().toString())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -125,20 +142,18 @@ public class Register extends AppCompatActivity {
 
                             //Sign in success, update UI with the signed in users information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(Register.this, "Account Created",
+                            Toast.makeText(getContext(), "Account Created",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(user);
 
 
-                            Intent mainPageIntent = new Intent(Register.this, MainActivity.class);
-                            mainPageIntent.putExtra("Full Name", Name);
-                            startActivity(mainPageIntent);
+                           startActivity(new Intent(getActivity(),MainActivity.class));
 
 
                         } else {
                             //if Sign in fails, display a message to the user .
                             Log.w("UserWithEmail:Failure", task.getException());
-                            Toast.makeText(Register.this, "Authentication Failed.",
+                            Toast.makeText(getContext(), "Authentication Failed.",
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -176,14 +191,5 @@ public class Register extends AppCompatActivity {
         }
     }
 
-
- @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
 }
 
-
-*/

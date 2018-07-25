@@ -4,22 +4,22 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorPrimaryDark">@color/app_color2</item>
         <item name="colorAccent">@color/black</item>
     </style>
-
 
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="TextLabel" parent="TextAppearance.AppCompat">
-    <!-- Hint color and label color in FALSE state -->
-    <item name="android:textColorHint">@color/white</item>
-    <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="colorControlNormal"></item>
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/white</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal"></item>
     </style>
 
 
@@ -30,5 +30,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 </resources>

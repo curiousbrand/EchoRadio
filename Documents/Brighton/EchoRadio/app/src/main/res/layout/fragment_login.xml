@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:id="@+id/screen_area1"
     android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
@@ -12,7 +13,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.bpear.echoradio.LoginActivity">
+    tools:context="com.example.bpear.echoradio.LoginFragment">
 
 
     <!-- Login progress -->
@@ -21,8 +22,6 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
-        android:id="@+id/screen_area"
-        android:visibility="visible"
         card_view:cardBackgroundColor="#fff"
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true">
@@ -112,7 +111,7 @@
                 android:layout_marginBottom="180dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-              >
+                >
 
                 <ImageView
                     android:id="@+id/passicon"

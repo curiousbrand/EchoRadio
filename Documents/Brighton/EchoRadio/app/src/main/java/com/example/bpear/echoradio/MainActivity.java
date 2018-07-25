@@ -3,6 +3,7 @@ package com.example.bpear.echoradio;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity  {
     private Toolbar radiotoolbar;
     private SeekBar volumeBar;
     private SeekBar progress;
+    TextView liveTime;
     private ProgressDialog pd;
     ImageView b_play1;
 
@@ -49,7 +51,6 @@ public class MainActivity extends AppCompatActivity  {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private Timer timer;
     private MediaController mediaController;
 
 
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         volumeBar = (SeekBar) findViewById(R.id.volumeBar);
+        liveTime = findViewById(R.id.timeduration);
         progress = findViewById(R.id.seekBar2);
         progress.setEnabled(false);
 
@@ -78,8 +80,6 @@ public class MainActivity extends AppCompatActivity  {
         };
 
 
-        radiotoolbar = findViewById(R.id.Radio_toolbar);
-        radiotoolbar.setTitle("Live Stream");
 
 
         volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -113,15 +113,19 @@ public class MainActivity extends AppCompatActivity  {
                 if (started) {
                     b_play1.setImageResource(R.drawable.ic_play_arrow_black_24dp);
                     mediaPlayer.pause();
+                    liveTime.setText("0:00");
+                    liveTime.setTextColor(getResources().getColor(R.color.black));
                     started = false;
                 } else {
                     mediaPlayer.seekTo(length);
+
                     b_play1.setImageResource(R.drawable.ic_pause_black_24dp);
+
                     mediaPlayer.start();
 
                     started = true;
 
-                    pd.setMessage("Buffering...");
+                    pd.setMessage("Buffering... Please wait");
                     pd.show();
                     new PlayerTask().execute(stream);
                 }
@@ -192,6 +196,8 @@ public class MainActivity extends AppCompatActivity  {
                     @Override
                     public void onPrepared(MediaPlayer mp) {
                         pd.cancel();
+                        liveTime.setText("LIVE");
+                        liveTime.setTextColor(getResources().getColor(R.color.red));
                         mp.start();
                     }
                 });
@@ -228,7 +234,7 @@ public class MainActivity extends AppCompatActivity  {
                 case R.id.navigation_radio:
                     return true;
                 case R.id.navigation_articles:
-                    startActivity(new Intent(MainActivity.this, ArticleActivity.class));
+                   startActivity(new Intent(MainActivity.this, ArticleActivity.class));
                     return true;
                 case R.id.sign_out:
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

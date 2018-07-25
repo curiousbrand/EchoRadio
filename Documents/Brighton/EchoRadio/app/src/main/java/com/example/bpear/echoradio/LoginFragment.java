@@ -4,25 +4,17 @@ package com.example.bpear.echoradio;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-
-
-
-import android.os.Bundle;
-
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,70 +25,65 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
+public class LoginFragment extends Fragment {
 
-
-/**
- * A login screen that offers login via email/password.
- */
-
-
-public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
-    private Button btnSignup,btnLogin;
-    private TextView btnReset;
+    private Button btnLogin;
+    private TextView btnSignup, btnReset;
+
+
+    public LoginFragment() {
+        // Required empty public constructor
+    }
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_login, container, false);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
+            startActivity(new Intent(getContext(), MainActivity.class));
+            getActivity().finish();
         }
 
         // set the view now
-        setContentView(R.layout.activity_login);
 
 
-        inputEmail = (EditText) findViewById(R.id.logEmail);
-        inputPassword = (EditText) findViewById(R.id.logpassword);
-        progressBar = (ProgressBar) findViewById(R.id.login_progress);
-        btnSignup = findViewById(R.id.create_ccount);
-        btnLogin = (Button) findViewById(R.id.email_sign_in_button);
-        btnReset = findViewById(R.id.btn_reset_password);
+        inputEmail = (EditText) v.findViewById(R.id.logEmail);
+        inputPassword = (EditText) v.findViewById(R.id.logpassword);
+        progressBar = (ProgressBar) v.findViewById(R.id.login_progress);
+        btnSignup = v.findViewById(R.id.create_ccount);
+        btnLogin = (Button) v.findViewById(R.id.email_sign_in_button);
+        btnReset = v.findViewById(R.id.btn_reset_password);
+
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-      getSupportFragmentManager().beginTransaction()
-              .add(R.id.screen_area1, new LoginFragment())
-              .addToBackStack(null)
-              .commit();
-
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//             startActivity(new Intent(LoginActivity.this, Register.class));
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                        ft.replace(R.id.screen_area, new RegisterFragment() );
-                        ft.addToBackStack(null);
-                        ft.commit();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.screen_area1, new RegisterFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-//                getSupportFragmentManager().beginTransaction().replace(R.id.screen_area, new ForgotpasswordFragment())
+                startActivity(new Intent(getContext(), ForgotPasswordActivity.class));
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.screen_area, new ForgotpasswordFragment())
 //                        .addToBackStack(null)
 //                        .commit();
             }
@@ -122,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 // If sign in fails, display a message to the user. If sign in succeeds
@@ -134,23 +121,20 @@ public class LoginActivity extends AppCompatActivity {
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
-                                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getActivity(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(getContext(), MainActivity.class);
                                     startActivity(intent);
-                                    finish();
+                                    getActivity().finish();
                                 }
                             }
                         });
             }
         });
+        return v;
     }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
 }
+
+
 

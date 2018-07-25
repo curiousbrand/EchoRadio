@@ -29,12 +29,16 @@
             android:name=".BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation" />
         <activity android:name=".ArticleActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Register"/>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity">
+
         </activity>
 
         <service android:name=".EchoFirebaseMessagingService">
@@ -42,15 +46,25 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/echologo" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
         <service android:name=".EchoFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".SERVICES.BackgroundService"/>
+        <service android:name=".SERVICES.BackgroundService" />
 
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".Register"></activity>
+
     </application>
 
 </manifest>

@@ -24,6 +24,7 @@ import android.text.Html;
  * so next time this will not show, until next upgrade.
  */
 
+
 public class AppEULA {
     private String EULA_PREFIX = "GetVersionCode";
 
@@ -60,7 +61,7 @@ public class AppEULA {
             String title = "Terms & Conditions";
 
             // EULA text
-           String text = mContext.getString(R.string.eula_string);
+            String text = mContext.getString(R.string.eula_string);
             CharSequence styledText = Html.fromHtml(text);
 
 
@@ -79,10 +80,10 @@ public class AppEULA {
                                 public void onClick(
                                         DialogInterface dialogInterface, int i) {
                                     // Mark this version as read.
-  //                               SharedPreferences.Editor editor = prefs
-//                                            .edit();
-//                                    editor.putBoolean(eulaKey, true);
-//                                    editor.commit();
+                                    SharedPreferences.Editor editor = prefs
+                                            .edit();
+                                    editor.putBoolean(eulaKey, true);
+                                    editor.commit();
 
                                     // Close dialog
                                     dialogInterface.dismiss();
@@ -109,4 +110,5 @@ public class AppEULA {
         }
     }
 }
+
 
