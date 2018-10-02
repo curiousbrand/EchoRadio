@@ -1,4 +1,4 @@
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

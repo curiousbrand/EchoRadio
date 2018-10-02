@@ -1,13 +1,21 @@
 
 
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +25,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +44,9 @@ public class RegisterFragment extends Fragment {
     private EditText passwordField;
     private EditText nameField;
     private CheckBox checkBox;
+    private CoordinatorLayout regisCoordi;
     private ProgressBar progressBar;
+private TextView termsofser;
     String Name;
     boolean EditTextStatus;
     //START declaring_auth
@@ -60,8 +71,47 @@ public class RegisterFragment extends Fragment {
         createaccnt = v.findViewById(R.id.createAccount);
         signin = v.findViewById(R.id.signIn);
         checkBox = v.findViewById(R.id.checkboxTerms);
+        termsofser = v.findViewById(R.id.text_term);
+        termsofser.setText(Html.fromHtml(
+                "<a href=''> Terms of Service</a>"));
+        termsofser.setClickable(true);
+        termsofser.setMovementMethod(LinkMovementMethod.getInstance());
+        termsofser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = "Terms of Service ";
+
+                // EULA text
+                String text = getString(R.string.eula_string);
+                CharSequence styledText = Html.fromHtml(text);
 
 
+                // Disable orientation changes, to prevent parent activity
+                // reinitialization
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
+                        .setTitle(title)
+                        .setMessage(styledText)
+                        .setCancelable(false)
+                        .setNegativeButton("Close",
+                                new Dialog.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog,
+                                                        int which) {
+                                        // Close the activity as they have declined
+                                        // the EULA
+
+                                    }
+
+                                });
+                builder.create().show();
+            }
+            });
+
+        regisCoordi = (CoordinatorLayout) v.findViewById(R.id
+                .reg_coor);
         //START initialize auth
         mAuth = FirebaseAuth.getInstance();
 
@@ -84,7 +134,12 @@ public class RegisterFragment extends Fragment {
                 // If EditText is false then this block with execute.
                 else {
 
-                    Toast.makeText(getContext(), "Please fill all form fields.", Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getContext(), "Please fill all form fields.", Toast.LENGTH_LONG).show();
+                    Snackbar snackbar4 = Snackbar.make(regisCoordi,"Please fill all fields", Snackbar.LENGTH_LONG);
+                    View sb2View = snackbar4.getView();
+                    TextView textView2 = sb2View.findViewById(android.support.design.R.id.snackbar_text);
+                    textView2.setTextColor(Color.RED);
+                    snackbar4.show();
                 }
             }
         });
@@ -93,7 +148,7 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.screen_area1, new LoginFragment())
+                        .replace(R.id.screen_area, new LoginFragment())
                         .addToBackStack(null)
                         .commit();
 
@@ -110,7 +165,12 @@ public class RegisterFragment extends Fragment {
                     createaccnt.setEnabled(true);
                 } else {
                     createaccnt.setEnabled(false);
-                    Toast.makeText(getContext(),"Please check the box to continue",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getContext(),"Please check the box to continue",Toast.LENGTH_LONG).show();
+                    Snackbar snackbar5 = Snackbar.make(regisCoordi,"Checkbox to continue.", Snackbar.LENGTH_LONG);
+                    View sb2View = snackbar5.getView();
+                    TextView textView2 = sb2View.findViewById(android.support.design.R.id.snackbar_text);
+                    textView2.setTextColor(Color.RED);
+                    snackbar5.show();
                 }
             }
         });
@@ -124,7 +184,7 @@ public class RegisterFragment extends Fragment {
         //check if user is signed in (non null and update UI accordingly
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
-//        new AppEULA(this).show();
+        new AppEULA(getActivity()).show();
 
     }
 
@@ -142,8 +202,7 @@ public class RegisterFragment extends Fragment {
 
                             //Sign in success, update UI with the signed in users information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getContext(), "Account Created",
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Account Created", Toast.LENGTH_SHORT).show();
                             updateUI(user);
 
 
@@ -153,8 +212,12 @@ public class RegisterFragment extends Fragment {
                         } else {
                             //if Sign in fails, display a message to the user .
                             Log.w("UserWithEmail:Failure", task.getException());
-                            Toast.makeText(getContext(), "Authentication Failed.",
-                                    Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getContext(), "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                            Snackbar snackbar3 = Snackbar.make(regisCoordi,"Authentication Failed.", Snackbar.LENGTH_LONG);
+                            View sb2View = snackbar3.getView();
+                            TextView textView2 = sb2View.findViewById(android.support.design.R.id.snackbar_text);
+                            textView2.setTextColor(Color.RED);
+                            snackbar3.show();
                             updateUI(null);
                         }
                     }

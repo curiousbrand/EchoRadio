@@ -6,6 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:theme="@style/toolbarEntry"
     app:popupTheme="@style/AppTheme.PopupOverlay"
-    tools:context="com.example.bpear.echoradio.ArticleActivity">
+    tools:context="com.example.bpear.VoiceFM.ArticleActivity">
 
 </android.support.v7.widget.Toolbar>

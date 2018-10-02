@@ -1,11 +1,10 @@
 
 
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +52,8 @@ public class LoginFragment extends Fragment {
             getActivity().finish();
         }
 
+
+
         // set the view now
 
 
@@ -72,7 +72,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.screen_area1, new RegisterFragment())
+                        .replace(R.id.screen_area, new RegisterFragment())
                         .addToBackStack(null)
                         .commit();
             }
@@ -81,11 +81,11 @@ public class LoginFragment extends Fragment {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), ForgotPasswordActivity.class));
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.screen_area, new ForgotpasswordFragment())
-//                        .addToBackStack(null)
-//                        .commit();
+//                startActivity(new Intent(getContext(), ForgotPasswordActivity.class));
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.screen_area, new ForgotpasswordFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EchoRadio</string>
+    <string name="app_name">Voice FM</string>
     <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -26,17 +26,17 @@
     <string name="back"><![CDATA[<< Back]]></string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
-    <string name="channel_name">EchoRADIO</string>
+    <string name="channel_name">VoiceFM</string>
 
     <string name="accept">Accept</string>
-    <string name="eula_string">ECHO NEWS MOBILE APP
+    <string name="eula_string">VOICE FM 96.1 MOBILE APP
     ________________________________________
 
        <![CDATA[ <b>Terms and Conditions ("Terms")</b>]]>
 
-        Last updated: July 2, 2018
+        Last updated: August 8, 2018
 
-    Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the echodailynews.com website and the Mobile App “ECHO NEWS” mobile application (the "Service") operated by BSI Communications, Inc.  ("us", "we", or "our").
+    Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the echodailynews.com website and the Mobile App “VOICE FM” mobile application (the "Service") operated by BSI Communications, Inc.  ("us", "we", or "our").
 
     \nThis App is owned and controlled solely by BSI Communications, Inc., a corporation duly created and registered pursuant to the laws of the Republic of Guyana.
 

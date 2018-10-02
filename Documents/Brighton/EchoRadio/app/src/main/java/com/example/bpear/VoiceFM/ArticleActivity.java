@@ -1,5 +1,5 @@
 
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,19 +10,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.iid.FirebaseInstanceId;
-
-import static java.security.AccessController.getContext;
 
 public class ArticleActivity extends AppCompatActivity {
     private Toolbar articalToolbar;
@@ -66,7 +61,6 @@ public class ArticleActivity extends AppCompatActivity {
                     startActivity(new Intent(ArticleActivity.this, MainActivity.class));
                     return true;
                 case R.id.navigation_articles:
-                    finish();
                     return true;
                 case R.id.sign_out:
                     AlertDialog.Builder builder = new AlertDialog.Builder(ArticleActivity.this);

@@ -1,4 +1,4 @@
-package com.example.bpear.echoradio.SERVICES;
+package com.example.bpear.VoiceFM.SERVICES;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -10,8 +10,8 @@ import android.net.Uri;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.example.bpear.echoradio.MainActivity;
-import com.example.bpear.echoradio.R;
+import com.example.bpear.VoiceFM.MainActivity;
+import com.example.bpear.VoiceFM.R;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -43,7 +43,7 @@ public class BackgroundService extends Service {
         Uri radioUri = Uri.parse(stream);
         // Settings for exoPlayer
         simpleExoPlayer = ExoPlayerFactory.newSimpleInstance(context, new DefaultTrackSelector());
-        DefaultDataSource.Factory dataSource = new DefaultDataSourceFactory(context, Util.getUserAgent(context, "Echo Daily Radio "));
+        DefaultDataSource.Factory dataSource = new DefaultDataSourceFactory(context, Util.getUserAgent(context, "96.1 FM "));
         MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSource).createMediaSource(radioUri);
         // Prepare ExoPlayer
         simpleExoPlayer.prepare(mediaSource);

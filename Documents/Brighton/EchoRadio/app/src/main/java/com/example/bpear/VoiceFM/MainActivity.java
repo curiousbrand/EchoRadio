@@ -1,14 +1,12 @@
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
@@ -16,19 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.bpear.echoradio.SERVICES.BackgroundService;
+import com.example.bpear.VoiceFM.SERVICES.BackgroundService;
 import com.google.android.exoplayer2.util.Util;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
-import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
     MediaPlayer mediaPlayer;
-    String stream = "http://vis.media-ice.musicradio.com/RadioXUKMP3";
+    String stream = "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1xtra_mf_q?s=1531426242&e=1531440642&h=00f66a13d2babe717e13efb4fec1e9b4";
 
 
     private FirebaseAuth mAuth;
@@ -118,13 +114,9 @@ public class MainActivity extends AppCompatActivity  {
                     started = false;
                 } else {
                     mediaPlayer.seekTo(length);
-
                     b_play1.setImageResource(R.drawable.ic_pause_black_24dp);
-
                     mediaPlayer.start();
-
                     started = true;
-
                     pd.setMessage("Buffering... Please wait");
                     pd.show();
                     new PlayerTask().execute(stream);
@@ -222,6 +214,8 @@ public class MainActivity extends AppCompatActivity  {
         super.onBackPressed();
         Intent intent = new Intent(MainActivity.this, BackgroundService.class);
         Util.startForegroundService(MainActivity.this, intent);
+        liveTime.setText("LIVE");
+        liveTime.setTextColor(getResources().getColor(R.color.red));
 
     }
 
@@ -234,7 +228,8 @@ public class MainActivity extends AppCompatActivity  {
                 case R.id.navigation_radio:
                     return true;
                 case R.id.navigation_articles:
-                   startActivity(new Intent(MainActivity.this, ArticleActivity.class));
+                    startActivity(new Intent(MainActivity.this, ArticleActivity.class));
+                    mediaPlayer.start();
                     return true;
                 case R.id.sign_out:
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

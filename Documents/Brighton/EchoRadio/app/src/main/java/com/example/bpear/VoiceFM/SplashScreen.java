@@ -1,6 +1,6 @@
 
 
-package com.example.bpear.echoradio;
+package com.example.bpear.VoiceFM;
 
 import android.content.Intent;
 import android.os.Bundle;

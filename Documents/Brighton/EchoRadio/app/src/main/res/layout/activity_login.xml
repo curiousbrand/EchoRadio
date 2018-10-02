@@ -1,219 +1,251 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:id="@+id/screen_area1"
-    android:background="@color/white"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.bpear.echoradio.LoginActivity">
+    tools:context="com.example.bpear.VoiceFM.LoginActivity">
 
-
-    <!-- Login progress -->
-    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
+        android:id="@+id/screen_area"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        android:id="@+id/screen_area"
-        android:visibility="visible"
-        card_view:cardBackgroundColor="#fff"
-        card_view:cardPreventCornerOverlap="false"
-        card_view:cardUseCompatPadding="true">
+        android:background="@color/white"
+        android:padding="16dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 
-        <RelativeLayout
-            android:id="@+id/rel_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+    <!--
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/screen_area1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.example.bpear.echoradio.LoginActivity">
+
+
+        &lt;!&ndash; Login progress &ndash;&gt;
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/screen_area"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:visibility="visible"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            card_view:cardBackgroundColor="#fff"
+            card_view:cardPreventCornerOverlap="false"
+            card_view:cardUseCompatPadding="true">
 
-            <LinearLayout
-                android:id="@+id/reg_layout"
-                android:layout_width="match_parent"
+
+            <RelativeLayout
+                android:id="@+id/rel_2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/app_color2"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/circle"
-                    android:padding="10dp"
-                    android:src="@drawable/clipboards"
-                    android:tint="@color/white" />
+                <LinearLayout
+                    android:id="@+id/reg_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_color2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/circle"
+                        android:padding="10dp"
+                        android:src="@drawable/clipboards"
+                        android:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="LOGIN"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/logpass"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/emailicon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@color/app_color2"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_email_name" />
+
+                    <EditText
+                        android:id="@+id/logEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/emailicon"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@id/emailicon"
+                        android:background="@color/edittextregister"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="10dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/logpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/create_ccount"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="180dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp">
+
+                    <ImageView
+                        android:id="@+id/passicon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:background="@color/app_color2"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_action_name" />
+
+
+                    <EditText
+                        android:id="@+id/logpassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/passicon"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/passicon"
+                        android:background="@color/edittextregister"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingLeft="10dp" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/create_ccount"
+                    style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="10sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="LOGIN"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Not a member? Create Account"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/login_progress"
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="69dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.618" />
+
+                <Button
+                    android:id="@+id/email_sign_in_button"
+                    style="?android:borderlessButtonStyle"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/btn_reset_password"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="17dp"
+                    android:background="@color/app_color2"
+                    android:text="Sign In"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
 
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/logemail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/logpass"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="60dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp">
+                <TextView
+                    android:id="@+id/btn_reset_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/create_ccount"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="19dp"
+                    android:text="Forgot password? "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
 
                 <ImageView
-                    android:id="@+id/emailicon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@color/app_color2"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_email_name" />
-
-                <EditText
-                    android:id="@+id/logEmail"
-                    android:layout_width="match_parent"
+                    android:id="@+id/app_logo"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@id/emailicon"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@id/emailicon"
-                    android:background="@color/edittextregister"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:paddingLeft="10dp" />
+                    android:layout_below="@+id/reg_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/echologo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/logpass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/create_ccount"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="180dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-              >
-
-                <ImageView
-                    android:id="@+id/passicon"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:background="@color/app_color2"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_action_name" />
-
-
-                <EditText
-                    android:id="@+id/logpassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/passicon"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/passicon"
-                    android:background="@color/edittextregister"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:paddingLeft="10dp" />
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/create_ccount"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:text="Not a member? Create Account"
-                android:textColor="@color/black"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="13sp"/>
-
-            <ProgressBar
-                android:id="@+id/login_progress"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="69dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.618" />
-
-            <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:borderlessButtonStyle"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/btn_reset_password"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="17dp"
-                android:background="@color/app_color2"
-                android:text="Sign In"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
-            <TextView
-                android:id="@+id/btn_reset_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/create_ccount"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="19dp"
-                android:text="Forgot password? "
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" />
-
-            <ImageView
-                android:id="@+id/app_logo"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/reg_layout"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="14dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/echologo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-</RelativeLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>-->
